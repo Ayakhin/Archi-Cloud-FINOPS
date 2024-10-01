@@ -10,7 +10,8 @@ Description de la première étape.
 
 ## Étape 2: Connexion à la VM Windows
 Description de la connexion à la VM Windows.
-![Connexion à la VM Windows](screenshots/connexion_vm_windows.png)
+![Uploading Capture d'écran 2024-10-01 124243.png…]()
+
 
 ## Étape 3: Création de la VM Linux
 Description de la création de la VM Linux.
