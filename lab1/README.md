@@ -16,11 +16,13 @@ Description de la connexion à la VM Windows.
 
 ## Étape 3: Création de la VM Linux
 Description de la création de la VM Linux.
-![Création de la VM Linux](screenshots/creation_vm_linux.png)
+<img width="1280" alt="Capture d'écran 2024-10-01 120712" src="https://github.com/user-attachments/assets/0892a796-5f9e-4f86-8358-35ef0585e94e">
+
 
 ## Étape 4: Connexion à la VM Linux
 Description de la connexion à la VM Linux.
-![Connexion à la VM Linux](screenshots/connexion_vm_linux.png)
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/022883f8-82c8-42bd-b6c6-82005ef0e31c">
+
 
 ## Étape 5: Installation d'Apache sur la VM Linux
 Description de l'installation d'Apache et de la vérification de son fonctionnement.
