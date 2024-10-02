@@ -36,9 +36,9 @@ Le déploiement de l'application permet de mettre en ligne un site web ou une AP
 - Utilisation du **Portail Azure** : 
   - Aller dans **App Services** et créer une nouvelle application.
   - Configuration :
-    - Nom : `MyWebApp`
-    - Plan App Service : `MyAppServicePlan`
-    - Runtime : `Node.js 14`
+    - Nom : `MonApplicationWeb`
+    - Plan App Service : `MonAppServicePlan`
+    - Runtime : `NODE|18-lts`
 
 #### Capture d'écran
 1/2
