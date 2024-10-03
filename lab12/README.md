@@ -24,6 +24,8 @@ Nous avons défini un modèle ARM qui contient la structure de base suivante :
   "outputs": {}
 }
 ```
+![image](https://github.com/user-attachments/assets/75bf7cb8-36e9-4bd1-97f4-d0805900971f)
+
 
 2. Paramétrer le Modèle
 Nous avons ajouté des paramètres pour rendre le modèle plus réutilisable. Par exemple, nous avons défini un paramètre pour le nom du groupe de ressources et la région :
@@ -71,9 +73,6 @@ az deployment group show --name deploymentName --resource-group myResourceGroup
 Résultat
 Le déploiement a réussi, et nous avons maintenant une application multi-tier en place avec un backend de base de données SQL et un frontend hébergé sur Azure.
 
-Screenshots
-Capture d'écran 1 : Modèle ARM JSON.
-Capture d'écran 2 : Déploiement du modèle via Azure CLI.
-Capture d'écran 3 : Résultat final dans le portail Azure.
+
 Conclusion
 Ce laboratoire a permis d'apprendre comment utiliser les ARM templates pour automatiser et standardiser le déploiement de ressources sur Azure. L'automatisation via ARM rend la gestion de l'infrastructure plus efficace et réplicable.
