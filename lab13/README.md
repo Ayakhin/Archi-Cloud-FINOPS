@@ -21,6 +21,11 @@ Ce laboratoire vise à implémenter Azure Key Vault pour la gestion des secrets,
    - Remplissez les informations : nom, groupe de ressources et localisation.
    - Cliquez sur **"Vérifier + créer"**, puis sur **"Créer"**.
 
+
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/f254a166-d749-48ab-a766-f8c935e2d9f1)
+
 ## Étape 2 : Stockage et Récupération de Secrets, Clés et Certificats
 
 ### Stockage d'un Secret
@@ -31,10 +36,18 @@ Ce laboratoire vise à implémenter Azure Key Vault pour la gestion des secrets,
 4. Remplissez le nom et la valeur du secret.
 5. Cliquez sur **"Créer"**.
 
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/852a813f-3b59-435c-b812-43e49712323a)
+
 ### Récupération d'un Secret
 
 1. Accédez à la section **"Secrets"** de votre Key Vault.
 2. Cliquez sur le secret pour voir sa valeur.
+
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/8779d369-0511-43e8-b25f-94b92022f336)
 
 ### Stockage d'une Clé
 
@@ -43,9 +56,17 @@ Ce laboratoire vise à implémenter Azure Key Vault pour la gestion des secrets,
 3. Remplissez le nom et le type de protection.
 4. Cliquez sur **"Créer"**.
 
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/7f9128a6-6376-481b-b159-c65a991b582e)
+
 ### Récupération d'une Clé
 
 1. Dans la section **"Clés"**, cliquez sur le nom de la clé pour voir les détails.
+
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/d18be5f7-2bae-4b92-926a-32a6e5de73c8)
 
 ### Stockage d'un Certificat (Optionnel)
 
@@ -54,9 +75,18 @@ Ce laboratoire vise à implémenter Azure Key Vault pour la gestion des secrets,
 3. Remplissez les informations requises.
 4. Cliquez sur **"Créer"**.
 
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/de26bcef-f193-4edc-b5d6-04ac84b4ba4f)
+
+
 ### Récupération d'un Certificat
 
 1. Accédez à la section **"Certificats"** et cliquez sur le certificat créé pour voir ses détails.
+
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/18efc6c6-3ad0-49f5-8a40-c68f9bc0aac0)
 
 ## Étape 3 : Intégration de Key Vault avec une Application
 
@@ -69,10 +99,18 @@ Ce laboratoire vise à implémenter Azure Key Vault pour la gestion des secrets,
    - Sélectionnez les autorisations souhaitées et le principal.
    - Cliquez sur **"Enregistrer"**.
 
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/f6a91552-c44c-4a09-8230-3939a71136c2)
+
 ## Étape 4 : Configuration de la Surveillance
 
 1. Allez dans **"Journaux d'activité"** pour voir l'historique des opérations.
 2. Configurez des alertes si nécessaire en cliquant sur **"Alertes"** et en suivant les instructions.
+
+Capture d'écran
+
+![image](https://github.com/user-attachments/assets/4d4b0603-5eee-4ad7-97bf-d673486ac2cc)
 
 ## Étape 5 : Utilisation d'une Clé dans une Application
 
