@@ -36,7 +36,8 @@ Les sondes de santé vérifient la disponibilité des instances en arrière-plan
 
 
 2/2
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/a0adb00f-3819-47c2-8742-eb7038ab1b86)
+
 
 
 ### 3. Configuration d'Azure Traffic Manager
