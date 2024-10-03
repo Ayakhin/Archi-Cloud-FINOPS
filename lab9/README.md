@@ -17,7 +17,8 @@ Azure Load Balancer distribue le trafic réseau entrant vers plusieurs machines 
 - Créez des **Back-end Pools** pour inclure les VMs que vous souhaitez équilibrer.
 
 #### Capture d'écran
-![Déploiement Azure Load Balancer](./screenshots/load-balancer-deployment.png)
+![Uploading image.png…]()
+
 
 ### 2. Configuration des Sondes de Santé et des Règles de Répartition de Charge
 
