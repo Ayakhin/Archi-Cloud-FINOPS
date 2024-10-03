@@ -16,7 +16,8 @@
    - Région : `westus`
 5. Cliquez sur **"Vérifier + créer"**, puis sur **"Créer"**.
 
-![Capture d'écran - Création de la zone DNS](URL_DE_VOTRE_CAPTURE_1)
+![image](https://github.com/user-attachments/assets/c52013e7-1b8e-4997-a9fb-67fe4760270c)
+
 
 ## Étape 2 : Gérer les Enregistrements DNS
 1. Accédez à votre **Zone DNS** depuis le portail Azure.
@@ -24,22 +25,26 @@
 3. Cliquez sur **"Ajouter un enregistrement"**.
 4. Choisissez le type d'enregistrement à ajouter (A, CNAME, etc.) et remplissez les informations nécessaires.
 
-![Capture d'écran - Gestion des enregistrements DNS](URL_DE_VOTRE_CAPTURE_2)
+![image](https://github.com/user-attachments/assets/8de490ca-4995-4b7b-9fb3-ca59f4864d0c)
+
 
 ## Étape 3 : Configurer la Vérification de Domaine
 1. Ajoutez un enregistrement TXT pour prouver que vous possédez le domaine, en suivant les instructions fournies par le service Azure.
-   
-![Capture d'écran - Configuration de la vérification de domaine](URL_DE_VOTRE_CAPTURE_3)
+
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/ecdaf854-ba29-4dfb-a263-0fc46f6b0707">
+Nécéssite d'utiliser le domaines personnaliser mais pour cela il faut se mettre à jour et cela dépasse mon budget au niveau de la formule
 
 ## Étape 4 : Implémenter des Alias DNS (CNAME)
 1. Retournez à votre zone DNS.
 2. Cliquez sur **"Ajouter un enregistrement"** et choisissez **CNAME**.
 3. Remplissez les détails nécessaires et cliquez sur **"OK"**.
 
-![Capture d'écran - Ajout d'un enregistrement CNAME](URL_DE_VOTRE_CAPTURE_4)
+![image](https://github.com/user-attachments/assets/874f29bd-9a14-4839-a03d-be70718fd7c9)
+
 
 ## Étape 5 : Tester la Configuration DNS
 1. Utilisez des outils comme `nslookup` ou des vérificateurs DNS en ligne pour tester vos enregistrements DNS.
 
    ```bash
    nslookup exemple.com
+   ```
