@@ -17,7 +17,7 @@ Azure Load Balancer distribue le trafic réseau entrant vers plusieurs machines 
 - Créez des **Back-end Pools** pour inclure les VMs que vous souhaitez équilibrer.
 
 #### Capture d'écran
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/db9452dd-c254-4be5-89b3-82e1be673850)
 
 
 ### 2. Configuration des Sondes de Santé et des Règles de Répartition de Charge
@@ -31,7 +31,13 @@ Les sondes de santé vérifient la disponibilité des instances en arrière-plan
 - Créez une règle de répartition de charge pour diriger le trafic entrant vers les VM.
 
 #### Capture d'écran
-![Configuration Sondes de Santé](./screenshots/load-balancer-health-probes.png)
+1/2
+![image](https://github.com/user-attachments/assets/a10aa2ee-93af-4417-ab25-b4ccd044c627)
+
+
+2/2
+![Uploading image.png…]()
+
 
 ### 3. Configuration d'Azure Traffic Manager
 
