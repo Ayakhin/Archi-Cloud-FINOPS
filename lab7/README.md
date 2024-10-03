@@ -20,7 +20,7 @@ Azure Functions permet de créer des applications serverless qui réagissent à 
     - Plan : `B1 (Basic)`
 
 #### Capture d'écran
-<img width="1280" alt="image" src="https://github.com/user-attachments/assets/90718f0f-cd30-4dd0-8fcd-5e74fe0f5f37">
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/5cc65dcf-6c2e-49c1-bff4-665fb58bfea7">
 
 
 
@@ -35,7 +35,7 @@ Nous avons créé une fonction Python déclenchée par une requête HTTP qui pre
   - Modifier le code pour traiter la requête HTTP et retourner un message.
 
 #### Capture d'écran
-<img width="1280" alt="image" src="https://github.com/user-attachments/assets/5cc65dcf-6c2e-49c1-bff4-665fb58bfea7">
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/90718f0f-cd30-4dd0-8fcd-5e74fe0f5f37">
 
 
 ### 3. Intégration avec Azure Storage
@@ -49,7 +49,8 @@ Nous avons modifié la fonction pour qu'elle enregistre le nom reçu dans une re
 - Modifier la fonction pour écrire dans un blob.
 
 #### Capture d'écran
-![Integration Azure Storage](./screenshots/azure-storage-integration.png)
+![image](https://github.com/user-attachments/assets/29095bfc-b20d-4cce-9e82-b9d4cb276ba3)
+
 
 ### 4. Surveillance et Logs
 
@@ -57,7 +58,8 @@ Nous avons modifié la fonction pour qu'elle enregistre le nom reçu dans une re
 Nous avons surveillé les performances de la fonction et vérifié les journaux via le portail Azure.
 
 #### Capture d'écran
-![Monitoring Function](./screenshots/function-monitoring.png)
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/d84481d9-c518-4468-8a2b-7791c47ca4e2">
+
 
 ### Conclusion
 Ce laboratoire m'a permis de découvrir comment créer et déployer des Azure Functions, intégrer une fonction serverless avec Azure Blob Storage et surveiller les performances à l'aide des outils intégrés d'Azure.
