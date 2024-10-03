@@ -20,6 +20,14 @@ Le Recovery Services Vault est un service de stockage pour vos sauvegardes. Il p
   - **Région** : Choisissez la région pour le vault.
 - Cliquez sur **Vérifier + créer**, puis sur **Créer**.
 
+Capture d'écran
+1/2
+![image](https://github.com/user-attachments/assets/eec58171-ce98-4af9-bf01-00714614fffe)
+
+2/2
+![image](https://github.com/user-attachments/assets/eeaf3c2e-c073-446e-8f47-264a4ccfdb7a)
+
+
 ### 2. Configuration de la sauvegarde pour les VMs et les fichiers Azure
 
 #### Explication
@@ -30,6 +38,13 @@ Cette étape consiste à sélectionner les ressources que vous souhaitez sauvega
 - Sélectionnez **Azure Virtual Machine** ou **Azure File Share**.
 - Suivez les instructions pour sélectionner les VMs ou fichiers à sauvegarder.
 
+Capture d'écran
+1/2
+![image](https://github.com/user-attachments/assets/86cae3e0-6225-491b-9dbc-1e01a82c929b)
+2/2
+![image](https://github.com/user-attachments/assets/4cbc28e2-ddac-4618-9e92-88ef20de59dc)
+
+
 ### 3. Effectuer une opération de sauvegarde
 
 #### Explication
@@ -38,7 +53,18 @@ Une sauvegarde manuelle permet de créer une copie instantanée des données pou
 #### Commandes / Étapes
 - Dans le vault, allez à **Protected items** et cliquez sur **Backup items**.
 - Sélectionnez l'élément à sauvegarder.
-- Cliquez sur **Backup Now**.
+- Cliquez sur **Sauvegarder maintenant**
+
+Capture d'écran
+1/3
+![image](https://github.com/user-attachments/assets/a0bc034d-67e1-40ba-8976-d6c61e4eb019)
+
+2/3
+![image](https://github.com/user-attachments/assets/0c921e81-a709-48ba-8dbe-8ab361cb70fb)
+
+3/3
+
+
 
 ### 4. Restauration d'une opération de sauvegarde
 
@@ -49,6 +75,9 @@ La restauration vous permet de récupérer des données à partir de sauvegardes
 - Dans **Backup items**, sélectionnez l'élément à restaurer.
 - Cliquez sur **Restore** et suivez les instructions pour choisir les options de restauration.
 
+Capture d'écran
+![image](https://github.com/user-attachments/assets/88634075-ff92-4ad5-ae6c-e5ef8f2858dc)
+
 ### 5. Implémentation de politiques de sauvegarde et de rétention
 
 #### Explication
@@ -58,6 +87,13 @@ Les politiques de sauvegarde définissent la fréquence et la durée de conserva
 - Dans le vault, cliquez sur **Backup Policies**.
 - Créez ou modifiez une politique existante pour définir la fréquence des sauvegardes et les règles de rétention.
 - Appliquez cette politique aux ressources sauvegardées.
+
+Capture d'écran
+1/2
+![image](https://github.com/user-attachments/assets/d8aabb6d-c3db-4b75-a6d8-8b096bf0b8e0)
+
+2/2
+![image](https://github.com/user-attachments/assets/1219f0ae-5ac9-4ecd-bac5-49955aafe4cd)
 
 ## Conclusion
 Ce laboratoire a permis de découvrir les fonctionnalités de sauvegarde et de restauration offertes par Azure. L'utilisation de Recovery Services Vault facilite la gestion des sauvegardes pour les machines virtuelles et les fichiers, assurant ainsi la protection des données critiques.
