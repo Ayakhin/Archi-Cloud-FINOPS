@@ -265,7 +265,7 @@ Utiliser les fonctionnalités de l'API pour analyser le sentiment et extraire de
 #### Commandes / Étapes
 - Pour analyser des phrases clés, utiliser :
     ```python
-    key_phrases_response = text_analytics_client.extract_key_phrases(documents=documents)
+    var response = client.ExtractKeyPhrases("My cat might need to see a veterinarian.");
     ```
 
 ### 4. Surveillance de l'utilisation de l'API et Gestion des Clés
