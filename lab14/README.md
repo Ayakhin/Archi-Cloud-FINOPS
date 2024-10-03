@@ -43,8 +43,11 @@ Nécéssite d'utiliser le domaines personnaliser mais pour cela il faut se mettr
 
 
 ## Étape 5 : Tester la Configuration DNS
-1. Utilisez des outils comme `nslookup` ou des vérificateurs DNS en ligne pour tester vos enregistrements DNS.
+1. Utilisez des outils comme `nslookup`ou bien `dig` sur Azure cloud shell ou des vérificateurs DNS en ligne pour tester vos enregistrements DNS.
 
    ```bash
-   nslookup exemple.com
+   nslookup mazonedns.com
    ```
+
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/82fe8b77-e753-4000-9a83-72a72005705f">
+
