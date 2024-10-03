@@ -16,13 +16,14 @@ La ressource Cognitive Services permet d'accéder aux fonctionnalités d'IA d'Az
   - Rechercher **Cognitive Services** et sélectionner **Text Analytics**.
   - Remplir les informations nécessaires :
     - Nom de la ressource : MyCognitiveService
-    - Région : West Europe
-    - Type de tarification : S0 (Standard)
+    - Région : West US
+    - Type de tarification : F0 (Standard)
     - Groupe de ressources : MyResourceGroup
   - Cliquer sur **Créer**.
 
 #### Capture d'écran
-![Création Ressource Cognitive Services](./screenshots/cognitive-services-resource.png)
+![image](https://github.com/user-attachments/assets/e2339aeb-21cb-4919-8bbe-8908b983afeb)
+
 
 ### 2. Développement d'une Application Utilisant l'API Text Analytics
 
@@ -30,29 +31,231 @@ La ressource Cognitive Services permet d'accéder aux fonctionnalités d'IA d'Az
 Développer une application pour interagir avec l'API Text Analytics et analyser le sentiment d'un texte donné.
 
 #### Commandes / Étapes
-- Utilisation de **Python** :
-  - Installer la bibliothèque Azure :
-    ```bash
-    pip install azure-ai-textanalytics
-    ```
+- Utilisation de **C#** :
+
   - Écrire le code pour analyser le sentiment :
-    ```python
-    from azure.ai.textanalytics import TextAnalyticsClient
-    from azure.core.credentials import AzureKeyCredential
+```C#
+using System;
+using System.IO;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
-    endpoint = "https://<YOUR_RESOURCE_NAME>.cognitiveservices.azure.com/"
-    key = "<YOUR_KEY>"
-    text_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(key))
+namespace CluSample
+{
+    public class Program
+    {
+        private static HttpClient _client;
+        private static string _baseUri;
+        public static async Task Main()
+        {
+            // Setup
+            // _baseUri = "https://westus2.api.cognitive.microsoft.com/language/customize-conversation";
+            // _baseUri = "https://cluresource.cognitiveservices.azure.com/language/customize-conversation";
+            _baseUri = "https://YOUR_ENDPOINT/language/customize-conversation";
 
-    documents = ["I had a wonderful experience!"]
-    response = text_analytics_client.analyze_sentiment(documents=documents)
+            _client = new HttpClient();
+            _client.DefaultRequestHeaders.Add("ocp-apim-subscription-key" "YOUR_API_KEY");
 
-    for doc in response:
-        print(f"Sentiment: {doc.sentiment}, Confidence scores: {doc.confidence_scores}")
-    ```
+            var projectName = "mytestproject";
+
+            // Create new project by importing a project's JSON file.
+            var projectJson = File.ReadAllText("my_clu_project.json");
+            await ImportProjectAsync(projectName, projectJson);
+
+            // Train the project.
+            await TrainProjectAsync(projectName "myfirstmodel");
+
+            // Deploy the trained model.
+            await DeployProjectAsync(projectName "myfirstmodel" "production");
+        }
+
+        private static async Task ImportProjectAsync(string projectName, string projectJson)
+        {
+            string pollingUrl;
+
+            // Submit the import request.
+            using (var content = new StringContent(projectJson, Encoding.UTF8 "application/json"))
+            {
+                // Specify the format of the file being imported. 
+                content.Headers.Add("format" "clu");
+
+                var requestUri = $"{_baseUri}/projects/{projectName}/import?api-version=DEFINE-API-VERSION";
+                using (var response = await _client.PostAsync(requestUri, content))
+                {
+                    response.EnsureSuccessStatusCode();
+                    pollingUrl = response.Headers.Location.AbsoluteUri;
+                }
+            }
+
+            // Wait for the import to finish.
+            var importSucceeded = false;
+            do
+            {
+                using (var response = await _client.GetAsync(pollingUrl))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    var jobDetails = JsonSerializer.Deserialize<JobDetails>(responseBody);
+                    if (jobDetails.Status == JobStatus.failed)
+                    {
+                        throw new Exception($"Deployment failed. JobId: {jobDetails.JobId}");
+                    }
+
+                    importSucceeded = jobDetails.Status == JobStatus.succeeded;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(1));
+            }
+            while (!importSucceeded);
+        }
+
+        private static async Task TrainProjectAsync(string projectName, string modelName)
+        {
+            var trainingRequestPayload = new TrainingRequestPayload { TrainingModelName = modelName };
+
+            string pollingUrl;
+
+            // Submit the training request.
+            var body = JsonSerializer.Serialize(trainingRequestPayload);
+            using (var content = new StringContent(body, Encoding.UTF8 "application/json"))
+            {
+                var requestUri = $"{_baseUri}/projects/{projectName}/train?api-version=2021-07-15-preview";
+                using (var response = await _client.PostAsync(requestUri, content))
+                {
+                    response.EnsureSuccessStatusCode();
+                    pollingUrl = response.Headers.Location.AbsoluteUri;
+                }
+            }
+
+            // Wait for the training to finish. This may take some time.
+            var trainingSucceeded = false;
+            do
+            {
+                using (var response = await _client.GetAsync(pollingUrl))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    var jobDetails = JsonSerializer.Deserialize<JobDetails>(responseBody);
+                    if (jobDetails.Status == JobStatus.failed)
+                    {
+                        throw new Exception($"Training failed. JobId: {jobDetails.JobId}");
+                    }
+
+                    trainingSucceeded = jobDetails.Status == JobStatus.succeeded;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(1));
+            }
+            while (!trainingSucceeded);
+        }
+
+        private static async Task DeployProjectAsync(string projectName, string modelName, string deploymentName)
+        {
+            var deploymentRequestPayload = new DeploymentRequestPayload { TrainingModelName = modelName };
+
+            string pollingUrl;
+
+            // Create or update the deployment to point to our latest deployed model.
+            var body = JsonSerializer.Serialize(deploymentRequestPayload);
+            using (var content = new StringContent(body, Encoding.UTF8 "application/json"))
+            {
+                var requestUri = $"{_baseUri}/projects/{projectName}/deployments/{deploymentName}?api-version=2021-07-15-preview";
+                using (var response = await _client.PutAsync(requestUri, content))
+                {
+                    response.EnsureSuccessStatusCode();
+                    pollingUrl = response.Headers.Location.AbsoluteUri;
+                }
+            }
+
+            // Wait for the deployment to finish.
+            var deploymentSucceeded = false;
+            do
+            {
+                using (var response = await _client.GetAsync(pollingUrl))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    var jobDetails = JsonSerializer.Deserialize<JobDetails>(responseBody);
+                    if (jobDetails.Status == JobStatus.failed)
+                    {
+                        throw new Exception($"Deployment failed. JobId: {jobDetails.JobId}");
+                    }
+
+                    deploymentSucceeded = jobDetails.Status == JobStatus.succeeded;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(1));
+            }
+            while (!deploymentSucceeded);
+        }
+
+        private class TrainingRequestPayload
+        {
+            [JsonPropertyName("trainingModelName")]
+            public string TrainingModelName { get; set; }
+        }
+
+        private class DeploymentRequestPayload
+        {
+            [JsonPropertyName("trainingModelName")]
+            public string TrainingModelName { get; set; }
+        }
+
+        private class JobDetails
+        {
+            /// <summary>
+            /// Gets or sets the Job ID.
+            /// </summary>
+            [JsonPropertyName("jobId")]
+            public string JobId { get; set; }
+
+            /// <summary>
+            /// Gets or sets the Job Created Date Time.
+            /// </summary>
+            [JsonPropertyName("createdDateTime")]
+            public DateTime CreatedDateTime { get; set; }
+
+            /// <summary>
+            /// Gets or sets the Job Last Updated Date Time.
+            /// </summary>
+            [JsonPropertyName("lastUpdatedDateTime")]
+            public DateTime LastUpdatedDateTime { get; set; }
+
+            /// <summary>
+            /// Gets or sets the Job Expiration Date Time.
+            /// </summary>
+            [JsonPropertyName("expirationDateTime")]
+            public DateTime? ExpirationDateTime { get; set; }
+
+            /// <summary>
+            /// Gets or sets the Job Status.
+            /// </summary>
+            [JsonPropertyName("status")]
+            public JobStatus Status { get; set; }
+        }
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        private enum JobStatus
+        {
+            notStarted
+            inProgress
+            succeeded
+            partialSuccess = 4
+            failed
+        }
+    }
+}
+```
 
 #### Capture d'écran
-![Développement Application API](./screenshots/development-api.png)
+![image](https://github.com/user-attachments/assets/722d5eea-6ff1-4d01-a774-569f9731431d)
+
 
 ### 3. Analyse du Sentiment et des Phrases Clés
 
