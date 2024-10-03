@@ -1,51 +1,63 @@
 # Lab 7: Implementing Azure Functions
 
 ## Objectif
-L'objectif de ce laboratoire est de créer et de déployer une fonction serverless en utilisant Azure Functions, de l'intégrer avec Azure Storage ou Azure Queue, et de surveiller les performances et les journaux de la fonction.
+Le but de ce laboratoire est de créer et de déployer une application serverless en utilisant Azure Functions, et de l'intégrer avec Azure Storage.
 
 ## Étapes Suivies
 
 ### 1. Création d'une Azure Function App
 
 #### Explication
-Une Function App est un environnement dans lequel vos fonctions Azure s'exécutent. Elle fournit les ressources nécessaires pour héberger et exécuter vos fonctions.
+Azure Functions permet de créer des applications serverless qui réagissent à des événements ou des requêtes HTTP.
+
+#### Commandes / Étapes
+- Utilisation du **Portail Azure** : 
+  - Recherche de **Function App** dans la barre de recherche.
+  - Création d'une application de fonctions avec les options suivantes :
+    - Groupe de ressources : `MyResourceGroup`
+    - Nom de l'application : `MyFunctionApp`
+    - Runtime : `Python 3.9`
+    - Plan : `B1 (Basic)`
+
+#### Capture d'écran
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/90718f0f-cd30-4dd0-8fcd-5e74fe0f5f37">
+
+
+
+### 2. Développement d'une Fonction HTTP Trigger
+
+#### Explication
+Nous avons créé une fonction Python déclenchée par une requête HTTP qui prend un paramètre `name` et retourne un message personnalisé.
 
 #### Commandes / Étapes
 - Utilisation du **Portail Azure** :
-  - Recherche de **Function App** dans la barre de recherche.
-  - Cliquez sur **Créer** et remplissez les informations suivantes :
-    - Nom de l'application : `MyFunctionApp`
-    - Groupe de ressources : `MyResourceGroup`
-    - Région : `West Europe`
-    - Plan d'hébergement : Plan de consommation (serverless)
-    - Runtime stack : `Python`
+  - Aller dans la **Function App**, cliquer sur **Functions** et ajouter une nouvelle fonction de type **HTTP Trigger**.
+  - Modifier le code pour traiter la requête HTTP et retourner un message.
 
 #### Capture d'écran
-![image](https://github.com/user-attachments/assets/cc98f5ba-c9ea-47ad-9a8d-2f930f627691)
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/5cc65dcf-6c2e-49c1-bff4-665fb58bfea7">
 
 
-### 2. Développement d'une fonction serverless déclenchée par une requête HTTP
+### 3. Intégration avec Azure Storage
 
 #### Explication
-Les Azure Functions peuvent être déclenchées par divers événements, comme une requête HTTP. Ici, nous créons une fonction qui répondra à une requête HTTP GET.
+Nous avons modifié la fonction pour qu'elle enregistre le nom reçu dans une requête HTTP dans un conteneur Azure Blob Storage.
 
-#### Commandes / Étapes
-- Accédez à la **Function App** créée, puis dans **Functions**, créez une nouvelle fonction avec le déclencheur **HTTP Trigger**.
-- Développez votre fonction directement dans l'éditeur Azure avec le code suivant (en JavaScript) :
-  
-  ```javascript
-  module.exports = async function (context, req) {
-      const name = (req.query.name || (req.body && req.body.name));
-      if (name) {
-          context.res = {
-              body: "Hello, " + name
-          };
-      }
-      else {
-          context.res = {
-              status: 400,
-              body: "Please pass a name in the query string or in the request body"
-          };
-      }
-  };
-```
+#### Étapes
+- Ajouter une bibliothèque Azure Storage dans la fonction :
+  - Installer le package `azure-storage-blob` via **requirements.txt** dans la fonction.
+- Modifier la fonction pour écrire dans un blob.
+
+#### Capture d'écran
+![Integration Azure Storage](./screenshots/azure-storage-integration.png)
+
+### 4. Surveillance et Logs
+
+#### Explication
+Nous avons surveillé les performances de la fonction et vérifié les journaux via le portail Azure.
+
+#### Capture d'écran
+![Monitoring Function](./screenshots/function-monitoring.png)
+
+### Conclusion
+Ce laboratoire m'a permis de découvrir comment créer et déployer des Azure Functions, intégrer une fonction serverless avec Azure Blob Storage et surveiller les performances à l'aide des outils intégrés d'Azure.
