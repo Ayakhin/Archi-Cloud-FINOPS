@@ -50,7 +50,12 @@ Azure Traffic Manager permet de gérer le routage du trafic DNS entre plusieurs 
 - Ajoutez des points de terminaison en sélectionnant votre Load Balancer.
 
 #### Capture d'écran
-![Configuration Azure Traffic Manager](./screenshots/traffic-manager-configuration.png)
+1/2
+![image](https://github.com/user-attachments/assets/98d152c3-98cb-4e58-a3dc-f93f9680573e)
+
+2/2
+![image](https://github.com/user-attachments/assets/60743a2a-0a40-4f21-9a07-bd212883c977)
+
 
 ### 4. Test des Scénarios de Basculement
 
@@ -63,7 +68,12 @@ Il est crucial de vérifier comment le système réagit lorsque certaines instan
 - Surveillez les résultats via le Portail Azure.
 
 #### Capture d'écran
-![Test de Basculement](./screenshots/failover-test.png)
+1/2
+![image](https://github.com/user-attachments/assets/a584dfad-70c4-4c6d-b1a2-1536820360c0)
+
+2/2
+![image](https://github.com/user-attachments/assets/8dc263fd-942b-4a1a-93ca-1dbbb4453f4a)
+
 
 ### Conclusion
 Ce laboratoire a permis de comprendre le déploiement et la configuration d'Azure Load Balancer et Azure Traffic Manager pour assurer la haute disponibilité des applications. J'ai acquis des compétences sur la gestion du routage du trafic et le test de scénarios de basculement pour garantir la continuité des services.
