@@ -20,7 +20,8 @@ Azure SQL Database est une base de données relationnelle dans le cloud gérée 
     - Tarification : Choisir un niveau **Basique** ou **Standard** selon vos besoins.
 
 #### Capture d'écran
-![Déploiement Base SQL](./screenshots/sql-deployment.png)
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/ad9cfb17-c907-423a-8c73-a2a8c94da310">
+
 
 ### 2. Configuration des paramètres du pare-feu
 
