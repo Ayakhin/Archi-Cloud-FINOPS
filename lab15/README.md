@@ -8,7 +8,8 @@ Dans ce laboratoire, nous allons configurer Azure DevOps pour créer des pipelin
 1. **Accéder à Azure DevOps**
    - Allez sur [Azure DevOps](https://dev.azure.com) et connectez-vous.
 
-   ![Capture d'écran de la connexion à Azure DevOps](chemin/vers/votre/capture1.png)
+   ![image](https://github.com/user-attachments/assets/040149f7-bca5-425e-9f0a-3b54170c581a)
+
 
 2. **Créer une organisation**
    - Cliquez sur "Créer une organisation" et suivez les instructions.
@@ -18,14 +19,14 @@ Dans ce laboratoire, nous allons configurer Azure DevOps pour créer des pipelin
 3. **Créer un projet**
    - Cliquez sur "Nouveau projet", donnez un nom à votre projet et cliquez sur "Créer".
 
-   ![Capture d'écran de la création d'un projet](chemin/vers/votre/capture3.png)
+   ![Capture d'écran de la création d'une organisation](chemin/vers/votre/capture2.png)
 
 ## Étape 2: Créer un dépôt Git et commettre du code
 
 1. **Accéder au dépôt**
-   - Dans votre projet, allez dans l'onglet "Repos".
+   - Dans votre projet, allez dans l'onglet "Repos   ".
 
-   ![Capture d'écran de l'onglet Repos](chemin/vers/votre/capture4.png)
+   ![image](https://github.com/user-attachments/assets/06ae3d95-9129-4d73-8cbe-343167ea956a)
 
 2. **Créer un nouveau dépôt**
    - Cliquez sur "Nouveau dépôt" et donnez-lui un nom.
